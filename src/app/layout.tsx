@@ -16,9 +16,14 @@ const beausite = localFont({
 
 export const metadata: Metadata = {
   title: 'Visit California RFP Agent',
-  description: 'AI-powered RFP assistant for Visit California, powered by Elvex',
+  description: "Deep-dive into Stagwell's proposal for Visit California.",
   icons: {
     icon: '/favicon.png',
+  },
+  openGraph: {
+    title: 'Visit California RFP Agent',
+    description: "Deep-dive into Stagwell's proposal for Visit California.",
+    type: 'website',
   },
 };
 
