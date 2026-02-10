@@ -56,19 +56,19 @@ function WelcomePanel() {
           <ul className="space-y-2 text-sm md:text-base opacity-90">
             <li className="flex items-start gap-2">
               <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white flex-shrink-0" />
-              How does The Machine connect strategy, creative, and media?
+              How is the integrated team set up and how do we work together?
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white flex-shrink-0" />
-              What are the 4 Shifts to evolve the brand platform?
+              What would you do in the first 30/60/90 days to build momentum?
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white flex-shrink-0" />
-              How will you prove incremental visitation and spend?
+              How will you evolve the platform and prove incrementality?
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white flex-shrink-0" />
-              How do you manage global consistency alongside local relevance?
+              How does The Machine support the work practically, in day-to-day delivery?
             </li>
           </ul>
         </div>
