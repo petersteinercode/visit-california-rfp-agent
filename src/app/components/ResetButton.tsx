@@ -32,14 +32,14 @@ export default function ResetButton() {
         <>
           <button
             onClick={handleReset}
-            className="text-xs px-3 py-1.5 rounded-lg bg-red-600 text-white hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+            className="text-xs px-3 py-1.5 rounded-lg bg-red-600 text-white hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-brand-black"
             aria-label="Confirm reset conversation"
           >
             Confirm Reset
           </button>
           <button
             onClick={handleCancel}
-            className="text-xs px-3 py-1.5 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+            className="text-xs px-3 py-1.5 rounded-lg bg-grey-line text-gray-300 hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-brand-black"
             aria-label="Cancel reset"
           >
             Cancel
@@ -48,7 +48,7 @@ export default function ResetButton() {
       ) : (
         <button
           onClick={handleReset}
-          className="text-xs px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 flex items-center gap-1.5"
+          className="text-xs px-3 py-1.5 rounded-lg bg-grey-line/50 text-gray-400 hover:bg-grey-line hover:text-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-brand-black flex items-center gap-1.5"
           aria-label="Reset conversation"
         >
           <svg

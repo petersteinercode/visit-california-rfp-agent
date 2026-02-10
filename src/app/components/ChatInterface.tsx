@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { useConversation } from '../context/ConversationContext';
 import MessageList from './MessageList';
 import MessageInput from './MessageInput';
@@ -14,10 +15,10 @@ function MessageCounter() {
       <span
         className={`text-xs font-medium tabular-nums ${
           state.isLimitReached
-            ? 'text-red-600'
+            ? 'text-red-400'
             : state.messageCount >= maxMessages - 5
-            ? 'text-amber-600'
-            : 'text-gray-400'
+            ? 'text-amber-400'
+            : 'text-gray-500'
         }`}
         aria-label={`${state.messageCount} of ${maxMessages} messages used`}
       >
@@ -27,38 +28,69 @@ function MessageCounter() {
   );
 }
 
+function WelcomePanel() {
+  return (
+    <div className="hidden md:flex relative w-full md:w-1/2 rounded-2xl overflow-hidden min-h-0 flex-1">
+      {/* Background image */}
+      <Image
+        src="/new-bg.png"
+        alt="California coastline"
+        fill
+        className="object-cover"
+        priority
+      />
+      {/* Content */}
+      <div className="relative z-10 flex flex-col justify-between p-8 md:p-10 text-white">
+        <div>
+          <h2 className="font-beausite text-2xl md:text-3xl leading-tight mb-6">
+            Stagwell is pleased to present our proposal for Visit California.
+          </h2>
+          <p className="text-sm md:text-base leading-relaxed opacity-90 mb-8">
+            Powered by The Machine, and bringing together the combined expertise of Code and Theory, Crispin, and Assembly into a single system designed to transform your global brand.
+          </p>
+        </div>
+        <div>
+          <p className="text-sm md:text-base mb-4">
+            Ask me about our proposed approach:
+          </p>
+          <ul className="space-y-2 text-sm md:text-base opacity-90">
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white flex-shrink-0" />
+              How does The Machine connect strategy, creative, and media?
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white flex-shrink-0" />
+              What are the 4 Shifts to evolve the brand platform?
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white flex-shrink-0" />
+              How will you prove incremental visitation and spend?
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white flex-shrink-0" />
+              How do you manage global consistency alongside local relevance?
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ChatInterface() {
   return (
-    <div className="flex flex-col h-screen max-h-screen bg-white">
+    <div className="flex flex-col h-screen max-h-screen bg-brand-black">
       {/* Header */}
-      <header className="flex-shrink-0 border-b border-gray-200 bg-white px-4 py-3 md:px-6">
-        <div className="flex items-center justify-between max-w-4xl mx-auto w-full">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
-              <svg
-                className="w-5 h-5 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
-                />
-              </svg>
-            </div>
-            <div>
-              <h1 className="text-sm md:text-base font-semibold text-gray-900 leading-tight">
-                Visit California RFP
-              </h1>
-              <p className="text-xs text-gray-500 hidden md:block">
-                AI-Powered RFP Assistant
-              </p>
-            </div>
-          </div>
+      <header className="flex-shrink-0 px-6 h-[95px]">
+        <div className="flex items-center justify-between h-full">
+          <Image
+            src="/machine-logo.png"
+            alt="The Machine"
+            width={135}
+            height={24}
+            className="h-[21px] w-auto"
+            priority
+          />
           <div className="flex items-center gap-3">
             <MessageCounter />
             <ResetButton />
@@ -66,14 +98,33 @@ export default function ChatInterface() {
         </div>
       </header>
 
-      {/* Messages */}
-      <div className="flex-1 overflow-hidden max-w-4xl mx-auto w-full flex flex-col">
-        <MessageList />
+      {/* Grey divider line */}
+      <div className="mx-6 border-t border-grey-line" />
+
+      {/* Subheader */}
+      <div className="px-6 py-[20px]">
+        <h1 className="font-aeonik-fono text-brand-orange text-xs md:text-sm tracking-[0.2em] uppercase">
+          Visit California RFP Agent
+        </h1>
       </div>
 
-      {/* Input */}
-      <div className="flex-shrink-0 max-w-4xl mx-auto w-full">
-        <MessageInput />
+      {/* Main content: two-column layout */}
+      <div className="flex-1 flex gap-4 px-4 md:px-6 pb-4 md:pb-6 min-h-0">
+        {/* Welcome panel - hidden on mobile */}
+        <WelcomePanel />
+
+        {/* Chat window */}
+        <div className="flex flex-col w-full md:w-1/2 bg-dark-grey rounded-2xl overflow-hidden min-h-0">
+          {/* Messages */}
+          <div className="flex-1 overflow-hidden flex flex-col min-h-0">
+            <MessageList />
+          </div>
+
+          {/* Input */}
+          <div className="flex-shrink-0">
+            <MessageInput />
+          </div>
+        </div>
       </div>
     </div>
   );

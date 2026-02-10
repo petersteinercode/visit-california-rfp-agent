@@ -2,19 +2,20 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
+const aeonikFono = localFont({
+  src: './fonts/AeonikFono-Medium.otf',
+  variable: '--font-aeonik-fono',
+  weight: '500',
 });
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
+
+const beausite = localFont({
+  src: './fonts/BeausiteClassicRegular.ttf',
+  variable: '--font-beausite',
+  weight: '400',
 });
 
 export const metadata: Metadata = {
-  title: 'Visit California RFP Assistant',
+  title: 'Visit California RFP Agent',
   description: 'AI-powered RFP assistant for Visit California, powered by Elvex',
 };
 
@@ -26,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${aeonikFono.variable} ${beausite.variable} antialiased`}
       >
         {children}
       </body>

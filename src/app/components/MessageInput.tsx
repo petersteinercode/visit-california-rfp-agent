@@ -49,9 +49,9 @@ export default function MessageInput() {
 
   if (state.isLimitReached) {
     return (
-      <div className="px-4 py-4 border-t border-gray-200 bg-white">
-        <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-center">
-          <p className="text-amber-800 text-sm">
+      <div className="px-4 py-4 border-t border-grey-line">
+        <div className="bg-amber-900/30 border border-amber-700/50 rounded-xl px-4 py-3 text-center">
+          <p className="text-amber-300 text-sm">
             You&apos;ve reached the conversation limit. Please reset to start a new
             conversation or contact Code and Theory for further assistance.
           </p>
@@ -61,30 +61,30 @@ export default function MessageInput() {
   }
 
   return (
-    <div className="px-4 py-3 border-t border-gray-200 bg-white">
+    <div className="px-4 py-4 border-t border-grey-line">
       {state.error && (
-        <div className="mb-3 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
-          <p className="text-red-700 text-sm">{state.error}</p>
+        <div className="mb-3 bg-red-900/30 border border-red-700/50 rounded-xl px-4 py-3">
+          <p className="text-red-300 text-sm">{state.error}</p>
         </div>
       )}
-      <form onSubmit={handleSubmit} className="flex items-end gap-3">
+      <form onSubmit={handleSubmit} className="flex items-center gap-3">
         <div className="flex-1 relative">
           <textarea
             ref={textareaRef}
             value={inputValue}
             onChange={handleInput}
             onKeyDown={handleKeyDown}
-            placeholder="Type your message..."
+            placeholder="Ask a question..."
             disabled={isDisabled}
             rows={1}
-            className="w-full resize-none rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-sm md:text-base text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="w-full resize-none rounded-xl border border-grey-line bg-dark-grey px-4 py-3 text-sm md:text-base text-white placeholder-gray-500 focus:border-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-500/30 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             aria-label="Message input"
           />
         </div>
         <button
           type="submit"
           disabled={!canSend}
-          className="flex-shrink-0 w-11 h-11 rounded-xl bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-blue-600 transition-colors"
+          className="flex-shrink-0 w-11 h-11 rounded-full bg-brand-orange text-white flex items-center justify-center hover:bg-brand-orange/90 focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2 focus:ring-offset-dark-grey disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-brand-orange transition-colors"
           aria-label="Send message"
         >
           {state.isLoading ? (
@@ -113,15 +113,11 @@ export default function MessageInput() {
               className="w-5 h-5"
               fill="none"
               stroke="currentColor"
+              strokeWidth={2}
               viewBox="0 0 24 24"
               aria-hidden="true"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 19V5m0 0l-5 5m5-5l5 5" />
             </svg>
           )}
         </button>

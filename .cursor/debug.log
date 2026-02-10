@@ -1,0 +1,14 @@
+{"location":"MessageList.tsx:render","message":"render during streaming/loading","data":{"renderCount":5,"isStreaming":true,"isLoading":true,"streamingContentLen":0,"streamingPreview":""},"timestamp":1770753907505,"hypothesisId":"H3_H4"}
+{"location":"MessageList.tsx:render","message":"render during streaming/loading","data":{"renderCount":6,"isStreaming":true,"isLoading":true,"streamingContentLen":0,"streamingPreview":""},"timestamp":1770753907506,"hypothesisId":"H3_H4"}
+{"location":"MessageList.tsx:render","message":"render during streaming/loading","data":{"renderCount":7,"isStreaming":true,"isLoading":true,"streamingContentLen":0,"streamingPreview":""},"timestamp":1770753907694,"hypothesisId":"H3_H4"}
+{"location":"MessageList.tsx:render","message":"render during streaming/loading","data":{"renderCount":8,"isStreaming":true,"isLoading":true,"streamingContentLen":0,"streamingPreview":""},"timestamp":1770753907695,"hypothesisId":"H3_H4"}
+{"location":"route.ts:stream","message":"elvex stream received, starting SSE parse","data":{},"timestamp":1770753907872,"hypothesisId":"H6_H7"}
+{"location":"elvex.ts:parseSse","message":"enqueued delta","data":{"chunkCount":1,"contentLen":75,"elapsed":7569},"timestamp":1770753915441,"hypothesisId":"H6_server"}
+{"location":"elvex.ts:parseSse","message":"enqueued delta","data":{"chunkCount":2,"contentLen":105,"elapsed":7572},"timestamp":1770753915444,"hypothesisId":"H6_server"}
+{"location":"elvex.ts:parseSse","message":"enqueued delta","data":{"chunkCount":3,"contentLen":127,"elapsed":7572},"timestamp":1770753915444,"hypothesisId":"H6_server"}
+{"location":"elvex.ts:parseSse","message":"enqueued delta","data":{"chunkCount":4,"contentLen":111,"elapsed":7572},"timestamp":1770753915444,"hypothesisId":"H6_server"}
+{"location":"elvex.ts:parseSse","message":"enqueued delta","data":{"chunkCount":5,"contentLen":119,"elapsed":7572},"timestamp":1770753915444,"hypothesisId":"H6_server"}
+{"location":"elvex.ts:parseSse","message":"parse complete","data":{"totalChunks":9,"totalElapsed":7573},"timestamp":1770753915445,"hypothesisId":"H6_server"}
+{"location":"ConversationContext.tsx:sendMessage","message":"fetch response received","data":{"ok":true,"status":200,"hasBody":true,"contentType":"text/event-stream; charset=utf-8"},"timestamp":1770753915443,"hypothesisId":"H4_H5"}
+{"location":"ConversationContext.tsx:streamLoop","message":"chunk received","data":{"chunkCount":1,"chunkLength":909,"chunkPreview":"Hello! This is **The Machine**—the AI embodiment of the Stagwell Integrated Agen","elapsedMs":2},"timestamp":1770753915446,"hypothesisId":"H1_H2"}
+{"location":"ConversationContext.tsx:streamEnd","message":"stream complete","data":{"totalChunks":1,"totalElapsedMs":3},"timestamp":1770753915447,"hypothesisId":"H1_H2"}
