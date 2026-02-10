@@ -7,17 +7,6 @@ const ELVEX_VERSION = process.env.ELVEX_VERSION || 'placeholder';
 const ELVEX_BASE_URL = 'https://api.elvex.ai';
 
 /**
- * Format messages for the Elvex API.
- * Elvex expects the full conversation history on each request.
- */
-function formatMessagesForElvex(messages: Message[]): { role: string; content: string }[] {
-  return messages.map((msg) => ({
-    role: msg.role,
-    content: msg.content,
-  }));
-}
-
-/**
  * Check if we're using placeholder credentials (development mode).
  */
 function isUsingPlaceholders(): boolean {
@@ -63,7 +52,9 @@ export async function generateTextResponse(messages: Message[]): Promise<string>
 
   const url = `${ELVEX_BASE_URL}/v0/apps/${ELVEX_ASSISTANT_ID}/versions/${ELVEX_VERSION}/text/generate`;
 
-  const formattedMessages = formatMessagesForElvex(messages);
+  // Send the last user message as the prompt
+  const lastUserMessage = messages.filter((m) => m.role === 'user').pop();
+  const prompt = lastUserMessage?.content || '';
 
   const response = await fetch(url, {
     method: 'POST',
@@ -71,10 +62,8 @@ export async function generateTextResponse(messages: Message[]): Promise<string>
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${ELVEX_API_KEY}`,
     },
-    body: JSON.stringify({
-      messages: formattedMessages,
-    }),
-    signal: AbortSignal.timeout(30000), // 30 second timeout
+    body: JSON.stringify({ prompt }),
+    signal: AbortSignal.timeout(120000), // 120 second timeout
   });
 
   if (!response.ok) {
@@ -86,25 +75,32 @@ export async function generateTextResponse(messages: Message[]): Promise<string>
 
   const data = await response.json();
 
-  // The Elvex API response structure may vary - handle common patterns
+  // Elvex returns { data: { response, messages, modified_messages, app, referenced_chunks }, meta }
+  // The assistant's reply is in data.response (string)
+  if (data.data?.response) {
+    return data.data.response;
+  }
+
+  // Fallback: check for assistant message in data.messages
+  if (data.data?.messages && Array.isArray(data.data.messages)) {
+    const assistantMessages = data.data.messages.filter(
+      (m: { role: string; content: string }) => m.role === 'assistant'
+    );
+    const lastAssistant = assistantMessages[assistantMessages.length - 1];
+    if (lastAssistant?.content) {
+      return lastAssistant.content;
+    }
+  }
+
+  // Other fallbacks
   if (typeof data === 'string') {
     return data;
   }
-
   if (data.response) {
     return data.response;
   }
-
   if (data.text) {
     return data.text;
-  }
-
-  if (data.message) {
-    return data.message;
-  }
-
-  if (data.choices && data.choices[0]?.message?.content) {
-    return data.choices[0].message.content;
   }
 
   throw new Error('Unexpected response format from Elvex API');
