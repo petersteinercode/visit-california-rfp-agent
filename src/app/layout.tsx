@@ -17,6 +17,9 @@ const beausite = localFont({
 export const metadata: Metadata = {
   title: 'Visit California RFP Agent',
   description: 'AI-powered RFP assistant for Visit California, powered by Elvex',
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default function RootLayout({
